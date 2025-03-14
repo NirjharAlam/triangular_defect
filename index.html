@@ -4,8 +4,9 @@
     <title>Sharp Defect Orientation Detection</title>
     <style>
         body {
+            font-size: 28px;
             font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-            line-height: 2.6;
+            line-height: 1.6;
             max-width: 900px;
             margin: 0 auto;
             padding: 20px;
@@ -42,7 +43,13 @@
     <h1>Angular Defect Orientation Detection from B-scans</h1>
     
     <section>
-        <p>GPR scans for sharp angular defects in low-permittivity-contrast building envelopes are simulated using an FDTD solver (gprMax). A convolutional regressor is subsequently applied to predict the angle of orientation for the defects by analyzing the GPR data.</p>
+        <p>Defects in building envelopes present unique challenges regarding GPR diagnostics. Primary among them are low permittivity contrasts and irregular shapes of defects. The low permittivity contrast between
+        envelope materials (PVC, plywood) and defect materials (mostly trapped air) leads to weak signals that are often difficult to interpret. The irregular shape of defects also produces erratic patterns which can be hard to 
+        codify as defects. 
+            
+        This work explores the feasibility of using convolutional neural networks (CNN) to detect such defects. A simple exercise is constructed to do so, where an isosceles triangular defect is rotated within a 
+        building envelope. The GPR B-scan of the wall section, corresponding to each different orientation of the defect, is generated using an FDTD solver (GPRMax). A convolutional regressor is subsequently applied to
+        predict the angle of orientation of the defects using the GPR rardargrams.</p>
     </section>
 
     <h2>Dataset</h2>
