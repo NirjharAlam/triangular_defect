@@ -2,52 +2,73 @@
 <html>
 <head>
     <title>Sharp Defect Orientation Detection</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .center-content {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            text-align: center;
+        }
+        nav {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        nav a {
+            margin: 0 15px;
+            text-decoration: none;
+            font-weight: bold;
+            color: #0073e6;
+        }
+        nav a:hover {
+            text-decoration: underline;
+        }
+    </style>
 </head>
 <body>
+    <nav>
+        <a href="index.html">Home</a> |
+        <a href="projects.html">Projects</a> |
+        <a href="contact.html">Contact</a>
+    </nav>
+
     <h1>Angular Defect Orientation Detection from B-scans</h1>
     
-    <h2>GPR scans for sharp angular defects in low-permittivity-contrast building envelopes are simulated using an FDTD solver (gprMax). A convolutional regressor 
-    is subsequently applied to predict the angle of orientation for the defects by analyzing the GPR data.</h2>
-    
-    <p>
-    GPR scans for sharp angular defects in low-permittivity-contrast building envelopes are simulated using an FDTD solver (gprMax). A convolutional regressor 
-    is subsequently applied to predict the angle of orientation for the defects by analyzing the GPR data.
-    </p>
+    <section>
+        <p>GPR scans for sharp angular defects in low-permittivity-contrast building envelopes are simulated using an FDTD solver (gprMax). A convolutional regressor is subsequently applied to predict the angle of orientation for the defects by analyzing the GPR data.</p>
+    </section>
 
     <h2>Dataset</h2>
 
-    <!-- Centering the First Image -->
-    <div style="text-align: center;">
+    <div class="center-content">
         <img src="triangular_defect_data.png" alt="Defects with different orientations" style="width: 50%;">
         <p>Defects with different orientations are simulated.</p>
     </div>
 
-    <!-- Flexbox Container for Second Element -->
-    <div style="display: flex; justify-content: center; margin-top: 20px;">
+    <div class="center-content" style="margin-top: 20px;">
         <iframe src="triangular_defect_angle_scatter_plot.html" width="600px" height="600px" style="border: none;"></iframe>
+        <p>Reduced embedding reveals discernible trends indicating raw data may be sufficient for prediction.</p>
     </div>
-    <p style="text-align: center;">Reduced embedding reveals discernible trends indicating raw data may be sufficient for prediction.</p>
 
     <h2>Analysis and Results</h2>
     
     <h3>Triangular Defect Angle Analysis</h3>
-    <p>
-        [Description of what this plot shows and its significance]
-    </p>
+    <p>[Description of what this plot shows and its significance]</p>
     
     <h3>UMAP Outlier Analysis</h3>
-    <p>
-        [Description of what the UMAP analysis reveals and why it's important]
-    </p>
+    <p>[Description of what the UMAP analysis reveals and why it's important]</p>
 
     <h2>Additional Findings</h2>
-    <p>
-        [Additional analysis, static images, or other results can go here]
-    </p>
+    <p>[Additional analysis, static images, or other results can go here]</p>
     
     <h2>Conclusions</h2>
-    <p>
-        [Summary of key findings and implications]
-    </p>
+    <p>[Summary of key findings and implications]</p>
 </body>
 </html>
