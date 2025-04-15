@@ -41,37 +41,110 @@
     </nav>
 
     <h1>Angular Defect Orientation Detection from B-scans</h1>
-    
+
+    <h2 style="margin-bottom: 1px;">Problem Description</h2>
     <section>
-        <p>Defects in building envelopes present unique challenges regarding GPR diagnostics. Primary among them are low permittivity contrasts and irregular shapes of defects. The low permittivity contrast between
-        envelope materials (PVC, plywood) and defect materials (mostly trapped air) leads to weak signals that are often difficult to interpret. The irregular shape of defects also produces erratic patterns which can be hard to 
-        codify as defects. 
+        <p>Defects in building envelopes present unique challenges for GPR diagnostics. This is
+        primarily due to the low permittivity contrasts between the envelope and defect materials, as 
+        well as the irregular shapes of the defects. The minimal contrast in permittivity between envelope materials 
+        (such as PVC and plywood) and defect materials (typically trapped air) results in weak reflections that are often 
+        difficult to interpret. Additionally, the irregular geometries of defects produce 
+        erratic patterns in radargrams, making them hard to classify reliably.
             
-        This work explores the feasibility of using convolutional neural networks (CNN) to detect such defects. A simple exercise is constructed to do so, where an isosceles triangular defect is rotated within a 
-        building envelope. The GPR B-scan of the wall section, corresponding to each different orientation of the defect, is generated using an FDTD solver (GPRMax). A convolutional regressor is subsequently applied to
-        predict the angle of orientation of the defects using the GPR rardargrams.</p>
+        This study investigates the potential of convolutional neural networks (CNNs) for 
+        detecting such defects. To this end, a controlled experiment is designed in which 
+        an isosceles triangular defect is rotated within a building envelope. For each 
+        orientation, the corresponding GPR B-scan of the wall section is simulated using 
+        an FDTD solver (GPRMax). A convolutional regression model is then employed to 
+        predict the angle of orientation of the defect from the resulting radargrams.</p>
     </section>
 
-    <h2>Dataset</h2>
+    <h2 style="margin-bottom: -5px;">Data</h2>
 
-    <div class="center-content">
-        <img src="triangular_defect_data.png" alt="Defects with different orientations" style="width: 80%;">
+    As seen in Figure 1 illusrattion, the change in orientation of the defect results in continuous shifts in the B-scan signal, 
+    until the incoming signals are aligned with one of the coreners in the triangle. However, the signals disappear abruptly when
+    the corner of the defect is aligned towards the incoming signal.
+
+    <figure class="center-content" style="margin-top: 0;">
+        <img src="triangular_defect_orientation_data.gif" alt="Defects with different orientations" style="width: 150%;">
+        <figcaption style = "width: 150%; display: block;"><b>Figure 1</b>: A continuous shift is observed with change in orientation, which makes the scans 
+        more interpretable.</figcaption>
+    </figure>
+
+    This represents a challenge for any model attempting to predict the orientation of the defect, since this means
+    that the distribution of the B-scans is not smooth and continuous with respect to the angle of oreintation. 
+
+    <figure class="center-content">
+        <img src="triangular_defect_data.png" alt="Defects with different orientations" style="width: 120%;">
+        <figcaption style = "width: 150%; display: block;"><b>Figure 2</b>: Given the symmetry of the triangular shape of the defect, different orientations lead to very similar scans.
+                    This poses a challenge in predicting the orientation of the defect. </figcaption>
+    </figure>
+
+Moreover, tne symmetrical nature of the shape means that defects at very differnt orientations can lead to very similar signals.
+As seen in Figure 2, the defect angles 140 and 280 have very similar signals, so does 0 and 220, and 300 and 60. 
+
+
+    <!-- <div class="center-content">
+        <img src="triangular_defect_data.png" alt="Defects with different orientations" style="width: 100%;">
         <p>Defects with different orientations are simulated.</p>
-    </div>
+    </div> -->
 
-    <div class="center-content">
-    <img src="triangular_defect_orientation_data.gif" alt="GIF showing defect orientation analysis" style="width: 80%;">
+
+    <!-- <div class="center-content">
+    <img src="triangular_defect_orientation_data.gif" alt="GIF showing defect orientation analysis" style="width: 100%;">
     <p>Animation showing defect orientation analysis.</p>
-    </div>
+    </div> -->
 
     <div class="center-content" style="margin-top: 20px;">
-        <iframe src="triangular_defect_angle_scatter_plot.html" width="600px" height="600px" style="border: none;"></iframe>
-        <p>Reduced embedding reveals discernible trends indicating raw data may be sufficient for prediction.</p>
+        <iframe src="triangular_defect_angle_scatter_plot.html" width="700px" height="600px" style="border: none;"></iframe>
+        <p><b>Figure 3:</b> Reduced embedding reveals discernible trends indicating raw data may be sufficient for prediction.</p>
     </div>
 
+Reduced dimsional projection of the B-scans maintain this pattern. Clusters of points corresponding 
+to similar defect angles lie close to each other, however, this is only a local trend, covering only segments
+of possible defect angles. Dissimilar angles with which produce similar scans are closer together in the reduced 
+embedding (see 142 and 281 defect angles). 
+    
+    <h2>Model</h2>
+    A Convolutional Neural Network (CNN) is a type of deep learning model specifically designed for processing structured grid data,
+    such as images. CNNs are particularly effective for tasks like image classification, object detection, and regression problems 
+    involving spatial data.A convolutional regressor with the following architecture is used to predict the defect angle from the B-scan:
+    <!-- <figcaption >Figure 2: ...</figcaption> -->
+
+    <figure class="center-content">
+        <img src="CNN_architecture_image_2.png" alt="Defects with different orientations" style="width: 200%;">
+        <figcaption style="margin-top: -5px; width: 150%; display: block;"><b>Figure 4</b>: Given the symmetry of the triangular shape of the defect, different orientations lead to very similar scans.
+                    This poses a challenge in predicting the orientation of the defect. </figcaption>
+    </figure>
+
     <h2>Analysis and Results</h2>
+
+    Different train-test splits are subsequently used to evaluate the model's performance. 
+    
+    <h3> Random Split</h3>
+    The dataset is randomly split into an 80-20 ratio The model is trained on 80% of the data and tested on 20%.
+    
+
+    <figure class="center-content">
+        <img src="random_split_predictions_combined_plot.png" alt="Defects with different orientations" style="width: 200%;">
+        <figcaption style="margin-top: -5px; width: 200%; display: block;"><b>Figure 4</b>: Given the symmetry of the triangular shape of the defect, different orientations lead to very similar scans.
+                    This poses a challenge in predicting the orientation of the defect. </figcaption>
+    </figure>
+
+    As seen in Figure 5, the model is able to predict the defect angle with a percent root mean squared error of of 6.83%. (how manny 
+    in degrees?)
+
+    <h3> Interpolation Split</h3>
+    <figure class="center-content">
+        <img src="interpolation_predictions.png" alt="Defects with different orientations" style="width: 100%;">
+        <figcaption style="margin-top: -5px; width: 150%; display: block;"><b>Figure 4</b>: Given the symmetry of the triangular shape of the defect, different orientations lead to very similar scans.
+                    This poses a challenge in predicting the orientation of the defect. </figcaption>
+    </figure>
+
     
     <h3>Triangular Defect Angle Analysis</h3>
+
+
     <p>[Description of what this plot shows and its significance]</p>
     
     <h3>UMAP Outlier Analysis</h3>
