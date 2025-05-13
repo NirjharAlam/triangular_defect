@@ -34,11 +34,11 @@
     </style>
 </head>
 <body>
-    <nav>
+    <!-- <nav>
         <a href="index.html">Home</a> |
         <a href="projects.html">Projects</a> |
         <a href="contact.html">Contact</a>
-    </nav>
+    </nav> -->
 
     <h1>Angular Defect Orientation Detection from B-scans</h1>
 
@@ -135,14 +135,50 @@ embedding (see 142 and 281 defect angles).
     in degrees?)
 
     <h3> Interpolation Split</h3>
+    To investigate the performance of the model on unseen range of orientations, a conditional split is used. 
+
+<head>
+    <style>
+        table {
+            width: 80%;
+            border-collapse: collapse;
+            margin: 20px;
+        }
+        th, td {
+            border: 1px solid #333;
+            padding: 8px;
+            text-align: center;
+        }
+        th {
+            background-color: #eee;
+        }
+    </style>
+</head>
+<body>
+
+<table>
+    <tr>
+        <th>Data Set</th>
+        <th>Orientation (degrees)</th>
+    </tr>
+    <tr>
+        <td>Train</td>
+        <td> 150 > orientation > 210</td>
+    </tr>
+    <tr>
+        <td>Test</td>
+        <td> 210 > orientation > 150 </td>
+    </tr>
+</table>
+
     <figure class="center-content">
-        <img src="interpolation_predictions.png" alt="Defects with different orientations" style="width: 100%;">
+        <img src="interpolation_split_predictions_combined_plot.jpg" alt="Defects with different orientations" style="width: 200%;">
         <figcaption style="margin-top: -5px; width: 150%; display: block;"><b>Figure 4</b>: Given the symmetry of the triangular shape of the defect, different orientations lead to very similar scans.
                     This poses a challenge in predicting the orientation of the defect. </figcaption>
     </figure>
 
-    
-    <h3>Triangular Defect Angle Analysis</h3>
+<!--     
+    <h2>Triangular Defect Angle Analysis</h2>
 
 
     <p>[Description of what this plot shows and its significance]</p>
@@ -152,8 +188,10 @@ embedding (see 142 and 281 defect angles).
 
     <h2>Additional Findings</h2>
     <p>[Additional analysis, static images, or other results can go here]</p>
-    
+     -->
     <h2>Conclusions</h2>
+    ** In progress **
     <p>[Summary of key findings and implications]</p>
+    ** In progress **
 </body>
 </html>
