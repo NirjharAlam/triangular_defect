@@ -61,18 +61,18 @@
 
     <h2 style="margin-bottom: -5px;">Data</h2>
 
-    As seen in Figure 1 illusrattion, the change in orientation of the defect results in continuous shifts in the B-scan signal, 
-    until the incoming signals are aligned with one of the coreners in the triangle. However, the signals disappear abruptly when
+    As seen in Figure 1 illustration, the change in orientation of the defect results in continuous shifts in the B-scan signal, 
+    until the incoming signals are aligned with one of the corners in the triangle. However, the signals disappear abruptly when
     the corner of the defect is aligned towards the incoming signal.
 
     <figure class="center-content" style="margin-top: 0;">
         <img src="triangular_defect_orientation_data.gif" alt="Defects with different orientations" style="width: 150%;">
-        <figcaption style = "width: 150%; display: block;"><b>Figure 1</b>: A continuous shift is observed with change in orientation, which makes the scans 
+        <figcaption style = "width: 150%; display: block;"><b>Figure 1</b>: A continuous shift is observed with a change in orientation, which makes the scans 
         more interpretable.</figcaption>
     </figure>
 
     This represents a challenge for any model attempting to predict the orientation of the defect, since this means
-    that the distribution of the B-scans is not smooth and continuous with respect to the angle of oreintation. 
+    that the distribution of the B-scans is not smooth and continuous concerning the angle of orientation. 
 
     <figure class="center-content">
         <img src="triangular_defect_data.png" alt="Defects with different orientations" style="width: 120%;">
@@ -80,8 +80,8 @@
                     This poses a challenge in predicting the orientation of the defect. </figcaption>
     </figure>
 
-Moreover, tne symmetrical nature of the shape means that defects at very differnt orientations can lead to very similar signals.
-As seen in Figure 2, the defect angles 140 and 280 have very similar signals, so does 0 and 220, and 300 and 60. 
+Moreover, the symmetrical nature of the shape means that defects at very different orientations can lead to very similar signals.
+As seen in Figure 2, the defect angles 140 and 280 have very similar signals, so do 0 and 220, and 300 and 60. 
 
 
     <!-- <div class="center-content">
@@ -100,9 +100,9 @@ As seen in Figure 2, the defect angles 140 and 280 have very similar signals, so
         <p><b>Figure 3:</b> Reduced embedding reveals discernible trends indicating raw data may be sufficient for prediction.</p>
     </div>
 
-Reduced dimsional projection of the B-scans maintain this pattern. Clusters of points corresponding 
+Reduced-dimensional projection of the B-scans maintains this pattern. Clusters of points corresponding 
 to similar defect angles lie close to each other, however, this is only a local trend, covering only segments
-of possible defect angles. Dissimilar angles with which produce similar scans are closer together in the reduced 
+of possible defect angles. Dissimilar angles that produce similar scans are closer together in the reduced 
 embedding (see 142 and 281 defect angles). 
     
     <h2>Model</h2>
@@ -113,8 +113,7 @@ embedding (see 142 and 281 defect angles).
 
     <figure class="center-content">
         <img src="CNN_architecture_image_2.png" alt="Defects with different orientations" style="width: 200%;">
-        <figcaption style="margin-top: -5px; width: 150%; display: block;"><b>Figure 4</b>: Given the symmetry of the triangular shape of the defect, different orientations lead to very similar scans.
-                    This poses a challenge in predicting the orientation of the defect. </figcaption>
+        <figcaption style="margin-top: -5px; width: 150%; display: block;"><b>Figure 4</b>: Architecture of the CNN model. . </figcaption>
     </figure>
 
     <h2>Analysis and Results</h2>
@@ -122,7 +121,7 @@ embedding (see 142 and 281 defect angles).
     Different train-test splits are subsequently used to evaluate the model's performance. 
     
     <h3> Random Split</h3>
-    The dataset is randomly split into an 80-20 ratio The model is trained on 80% of the data and tested on 20%.
+    The dataset is randomly split into an 80-20 ratio. The model is trained on 80% of the data and tested on 20%.
     
 
     <figure class="center-content">
@@ -131,11 +130,11 @@ embedding (see 142 and 281 defect angles).
                     This poses a challenge in predicting the orientation of the defect. </figcaption>
     </figure>
 
-    As seen in Figure 5, the model is able to predict the defect angle with a percent root mean squared error of of 6.83%. (how manny 
+    As seen in Figure 5, the model can predict the defect angle with a percent root mean squared error of of 6.83%. (how manny 
     in degrees?)
 
     <h3> Interpolation Split</h3>
-    To investigate the performance of the model on unseen range of orientations, a conditional split is used. 
+    To further investigate model performance on an unseen range of orientations, a conditional split is used. 
 
 <head>
     <style>
